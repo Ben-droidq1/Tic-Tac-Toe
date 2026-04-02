@@ -32,7 +32,8 @@ function TicTacToe() {
   // Socket connection
   useEffect(() => {
     if (mode === "online") {
-      const newSocket = io('http://localhost:3001')
+      const serverUrl = import.meta.env.VITE_SERVER_URL || `http://${window.location.hostname}:3001`
+      const newSocket = io(serverUrl)
       setSocket(newSocket)
 
       newSocket.on('connect', () => {

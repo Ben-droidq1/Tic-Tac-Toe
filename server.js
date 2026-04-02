@@ -108,9 +108,12 @@ io.on('connection', (socket) => {
 
     // If game finished, clean up after delay
     if (game.status === 'finished') {
+      const player1Id = game.players.player1.id;
+      const player2Id = game.players.player2.id;
       setTimeout(() => {
         activeGames.delete(gameId);
-        io.to(opponentId).emit('gameEnded');
+        io.to(player1Id).emit('gameEnded');
+        io.to(player2Id).emit('gameEnded');
       }, 5000); // 5 seconds to show result
     }
   });
