@@ -169,9 +169,17 @@ function TicTacToe() {
           setComputerWins(computerWins + 1);
         }
       }
+      // Automatically restart after 4 seconds
+      setTimeout(() => {
+        resetGame();
+      }, 4000);
     } else if (currentBoard.every(cell => cell !== "")) {
       setWinner("It's a Draw!");
       setLock(true);
+      // Automatically restart after 4 seconds
+      setTimeout(() => {
+        resetGame();
+      }, 4000);
     }
   }
 
